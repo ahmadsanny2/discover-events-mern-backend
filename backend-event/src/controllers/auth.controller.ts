@@ -38,7 +38,7 @@ export default {
             })
 
             res.status(200).json({
-                message: "Succes registration!",
+                message: "Success registration!",
                 data: {
                     fullName,
                     username,
