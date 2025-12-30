@@ -64,6 +64,13 @@ export default {
     },
 
     async login(req: Request, res: Response) {
+        /** 
+            #swagger.requestBody = {
+                required: true,
+                schema: { $ref: "#/components/schemas/loginRequest" },
+            };
+            */
+
         const { identifier, password } = req.body as unknown as TLogin;
 
         try {
@@ -116,15 +123,23 @@ export default {
     },
 
     async me(req: IReqUser, res: Response) {
-        try {
-            const user = req.user
+        /** 
+        #swagger.security = [
+            {
+                bearerAuth: [],
+            },
+        ];
+        */
 
-            const result = await UserModel.findById(user?.id)
+        try {
+            const user = req.user;
+
+            const result = await UserModel.findById(user?.id);
 
             res.status(200).json({
                 message: "Success get user profile",
-                data: result
-            })
+                data: result,
+            });
         } catch (error) {
             const err = error as unknown as Error;
             res.status(400).json({
@@ -132,5 +147,5 @@ export default {
                 data: null,
             });
         }
-    }
+    },
 };
