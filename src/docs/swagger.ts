@@ -26,15 +26,15 @@ const doc = {
         },
         schemas: {
             loginRequest: {
-                identifier: "ahmadsanny02",
-                password: "Skyslow12"
+                identifier: "johndoe",
+                password: "Johndoe123"
             },
             registerRequest: {
-                fullName: "Ahmad Sanny",
-                username: "ahmadsanny02",
-                email: "ahmadsanijabarulloh.02@gmail.com",
-                password: "Skyslow12",
-                confirmPassword: "Skyslow12"
+                fullName: "John Doe",
+                username: "johndoe",
+                email: "johndoe123@gmail.com",
+                password: "Johndoe123",
+                confirmPassword: "Johndoe123"
             },
             activationRequest: {
                 code: "abcde"

@@ -161,11 +161,11 @@
         "properties": {
           "identifier": {
             "type": "string",
-            "example": "ahmadsanny02"
+            "example": "johndoe"
           },
           "password": {
             "type": "string",
-            "example": "Skyslow12"
+            "example": "Johndoe123"
           }
         },
         "xml": {
@@ -177,23 +177,23 @@
         "properties": {
           "fullName": {
             "type": "string",
-            "example": "Ahmad Sanny"
+            "example": "John Doe"
           },
           "username": {
             "type": "string",
-            "example": "ahmadsanny02"
+            "example": "johndoe"
           },
           "email": {
             "type": "string",
-            "example": "ahmadsanijabarulloh.02@gmail.com"
+            "example": "johndoe123@gmail.com"
           },
           "password": {
             "type": "string",
-            "example": "Skyslow12"
+            "example": "Johndoe123"
           },
           "confirmPassword": {
             "type": "string",
-            "example": "Skyslow12"
+            "example": "Johndoe123"
           }
         },
         "xml": {
