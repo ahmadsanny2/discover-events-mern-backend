@@ -115,6 +115,37 @@
           }
         ]
       }
+    },
+    "/auth/activation": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/activationRequest"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/activationRequest"
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -139,6 +170,46 @@
         },
         "xml": {
           "name": "loginRequest"
+        }
+      },
+      "registerRequest": {
+        "type": "object",
+        "properties": {
+          "fullName": {
+            "type": "string",
+            "example": "Ahmad Sanny"
+          },
+          "username": {
+            "type": "string",
+            "example": "ahmadsanny02"
+          },
+          "email": {
+            "type": "string",
+            "example": "ahmadsanijabarulloh.02@gmail.com"
+          },
+          "password": {
+            "type": "string",
+            "example": "Skyslow12"
+          },
+          "confirmPassword": {
+            "type": "string",
+            "example": "Skyslow12"
+          }
+        },
+        "xml": {
+          "name": "registerRequest"
+        }
+      },
+      "activationRequest": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "abcde"
+          }
+        },
+        "xml": {
+          "name": "activationRequest"
         }
       }
     }

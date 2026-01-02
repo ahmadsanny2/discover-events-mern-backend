@@ -1,3 +1,4 @@
+import { register } from "module";
 import swaggerAutogen from "swagger-autogen";
 
 const doc = {
@@ -27,6 +28,16 @@ const doc = {
             loginRequest: {
                 identifier: "ahmadsanny02",
                 password: "Skyslow12"
+            },
+            registerRequest: {
+                fullName: "Ahmad Sanny",
+                username: "ahmadsanny02",
+                email: "ahmadsanijabarulloh.02@gmail.com",
+                password: "Skyslow12",
+                confirmPassword: "Skyslow12"
+            },
+            activationRequest: {
+                code: "abcde"
             }
         }
     }
