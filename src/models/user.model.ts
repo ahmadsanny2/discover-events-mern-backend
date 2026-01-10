@@ -1,3 +1,4 @@
+import { ROLES } from './../utils/constant';
 import { EMAIL_SMTP_USER } from './../utils/env';
 import { sendMail } from "./../utils/mail/mail";
 import mongoose from "mongoose";
@@ -41,8 +42,8 @@ const UserSchema = new Schema<User>(
         },
         role: {
             type: Schema.Types.String,
-            enum: ["admin", "user"],
-            default: "user",
+            enum: [ROLES.ADMIN, ROLES.MEMBER],
+            default: "member",
         },
         profilePicture: {
             type: Schema.Types.String,
