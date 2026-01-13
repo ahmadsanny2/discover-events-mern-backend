@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import UserModel from "../models/user.model";
 import { encrypt } from "../utils/encryption";
 import { generateToken } from "../utils/jwt";
+import response from '../utils/response';
 
 type TRegister = {
     fullName: string;
@@ -76,17 +77,9 @@ export default {
                 password,
             });
 
-            res.status(200).json({
-                message: "Success registration!",
-                data: result,
-            });
+            response.success(res, result, "Successfully registration!")
         } catch (error) {
-            const err = error as unknown as Error;
-
-            res.status(400).json({
-                message: err.message,
-                data: null,
-            });
+            response.error(res, error, "Failed registration")
         }
     },
 
@@ -116,10 +109,7 @@ export default {
             });
 
             if (!userByIdentifier) {
-                return res.status(403).json({
-                    message: "User not found",
-                    data: null,
-                });
+                return response.unauthorized(res, "User not found")
             }
 
             // Validate password
@@ -127,10 +117,7 @@ export default {
                 encrypt(password) === userByIdentifier.password;
 
             if (!validatePassword) {
-                return res.status(403).json({
-                    message: "User not found",
-                    data: null,
-                });
+                return response.unauthorized(res, "User not found")
             }
 
             const token = generateToken({
@@ -138,16 +125,9 @@ export default {
                 role: userByIdentifier.role,
             });
 
-            res.status(200).json({
-                message: "Login success",
-                data: token,
-            });
+            response.success(res, token, "Login successfully")
         } catch (error) {
-            const err = error as unknown as Error;
-            res.status(400).json({
-                message: err.message,
-                data: null,
-            });
+            response.error(res, error, "Failed login")
         }
     },
 
@@ -166,16 +146,9 @@ export default {
 
             const result = await UserModel.findById(user?.id);
 
-            res.status(200).json({
-                message: "Success get user profile",
-                data: result,
-            });
+            response.success(res, result, "Successfully get user profile")
         } catch (error) {
-            const err = error as unknown as Error;
-            res.status(400).json({
-                message: err.message,
-                data: null,
-            });
+            response.error(res, error, "Failed get user profile")
         }
     },
 
@@ -203,16 +176,9 @@ export default {
                 }
             );
 
-            res.status(200).json({
-                message: "Account successfully activated",
-                data: user,
-            });
+            response.success(res, user, "Account activated successfully")
         } catch (error) {
-            const err = error as unknown as Error;
-            res.status(400).json({
-                meessage: err.message,
-                data: null,
-            });
+            response.error(res, error, "Failed to activate account")
         }
     },
 };
